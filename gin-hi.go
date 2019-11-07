@@ -52,6 +52,7 @@ func main() {
 	r.GET("/", GetHome)
 	r.GET("/index", GetIndex)
 	r.GET("/home", GetHome)
+	r.GET("/oms", GetOMS)
 	r.GET("/ping2", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong2",
@@ -59,6 +60,8 @@ func main() {
 	})
 
 	r.GET("/html/*path", GetAsset)
+	r.GET("/aries-dist/*path", GetAssetOMS)
+	r.GET("/static/*path", GetAssetOMS)
 	go func() {
 		r.Run(":8888") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 
@@ -111,9 +114,28 @@ func GetIndex(c *gin.Context) {
 func GetHome(c *gin.Context) {
 	serveStaticAsset("/home.html", c)
 }
+func GetOMS(c *gin.Context) {
+	data, err := mydata.Asset("aries-dist/index.html")
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+
+	c.Data(200, assetContentType("/index.html"), data)
+}
 
 func GetAsset(c *gin.Context) {
 	serveStaticAsset(c.Params.ByName("path"), c)
+}
+
+func GetAssetOMS(c *gin.Context) {
+	data, err := mydata.Asset("aries-dist/static" + c.Params.ByName("path"))
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+
+	c.Data(200, assetContentType(c.Params.ByName("path")), data)
 }
 
 func openPage() {

@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>批处理JOB组配置</title>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<!--[if lt IE 9]>
+	<?import namespace="v" implementation="#default#VML" ?>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="../gooflow/css/GooFlow2.css" />
+	<script type="text/javascript" src="./jquery.min.js"></script>
+	<script type="text/javascript" src="../gooflow/js/GooFlow.js"></script>
+	<script type="text/javascript" src="../gooflow/js/GooFlow_color.js"></script>
+	<script type="text/javascript" src="../gooflow/js/GooFunc.js"></script>
+	<script type="text/javascript" src="./layer/1.9.3/layer.js"></script>
+	<script type="text/javascript" src="./application.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="./batchJobGroup.js"></script>
+</head>
+
+<body>
+	<div class="padding-20">
+		<div id="stria"></div>
+	</div>
+	<input type="hidden" id="ele_model" />
+	<input type="hidden" id="OLD_JOB_ID" />
+	<input type="hidden" id="IS_CHANGED" />
+	<input type="hidden" id="batchClass" value="" />
+	<input type="hidden" id="jobId" value="" />
+	<input type="hidden" id="jobDesc" value="" />
+	<input type="hidden" id="eod_sod" value="" />
+	<input type="hidden" id="tableWidth" value="" />
+	<input type="hidden" id="envIp" value="" />
+	<input type="hidden" id="zk" value="" />
+	<input type="hidden" id="applicationGroup" value="" />
+	<div id="baseParam"
+		style="margin-bottom:0px;background:rgb(245, 245, 245);border:1px solid rgb(204, 204, 204);margin-top:24px">
+		<form id="flowForm" style="margin-top:10px;margin-right:10px;margin-left:34px;margin-bottom:10px;">
+			<div>
+				<h5>批处理属性</h5>
+			</div>
+			<div>
+				<table>
+					<tr>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;width:80px;">批处理</td>
+						<td style="text-align:left;"><input type="text" class="input-text" style="margin-bottom:0px;"
+								id="BATCH_CLASS" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">EOD/SOD</td>
+						<td style="text-align:left;"><input type="text" class="input-text" style="margin-bottom:0px;"
+								id="EOD_SOD" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">批处理描述</td>
+						<td style="text-align:left;"><input type="text" class="input-text" style="margin-bottom:0px;"
+								id="BATCH_DESC" /></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<form id="propertyForm" style="margin-right:10px;margin-left:34px;margin-bottom:10px;">
+			<div id="basepro_desc">
+				<h5>基本属性</h5>
+			</div>
+			<div id="DEPENDENCY_TITLE" class="DEPENDENCY_DIV">
+				<h5>依赖属性</h5>
+			</div>
+			<div id="DEPENDENCY" class="DEPENDENCY_DIV">
+				<table>
+					<tr>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">依赖类型</td>
+						<td><select id="DEPENDENCY_TYPE" class="input-text" style="margin-bottom: 0px;">
+								<option value="S">强制依赖</option>
+								<option value="P" selected>非强制依赖</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="JOB_TITLE" class="JOB_DIV">
+				<h5>JOB属性</h5>
+			</div>
+			<div id="JOB" class="JOB_DIV">
+				<table>
+					<tr>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">JOB ID(*)</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="JOB_ID" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">JOB NAME(*)</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="JOB_NAME" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">静态参数</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="STATIC_PARAM" /></td>
+					</tr>
+					<tr>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">JOB 类型(*)</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="JOB_TYPE">
+								<option value="GX" selected>Galaxy JOB</option>
+								<option value="MR">mr JOB</option>
+								<option value="HB">hbase JOB</option>
+								<option value="DX">sqoop JOB</option>
+								<option value="IM">导入数据 JOB</option>
+								<option value="EX">导出数据 JOB</option>
+								<option value="PI">导入参数数据 JOB</option>
+								<option value="PM">导出参数数据 JOB</option>
+							</select>
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">JOB 描述</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="JOB_DESC" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">MODULE ID(*)</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="MODULE_ID"
+								maxlength="4" /></td>
+					</tr>
+					<tr id="tr_1">
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">SYSTEM ID(*)</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="SYSTEM_ID" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">日末跑</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="DAY_END">
+								<option value="Y" selected>是</option>
+								<option value="N">否</option>
+							</select>
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">周末跑</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="WEEK_END">
+								<option value="Y">是</option>
+								<option value="N" selected>否</option>
+							</select>
+						</td>
+					</tr>
+					<tr id="tr_2">
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">月末跑</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="MTH_END">
+								<option value="Y">是</option>
+								<option value="N" selected>否</option>
+							</select>
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">年末跑</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="YR_END">
+								<option value="Y">是</option>
+								<option value="N" selected>否</option>
+							</select>
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">出错能否跳过</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="IS_SKIP">
+								<option value="N" selected>不能</option>
+								<option value="A">自动跳过</option>
+								<option value="M">手动跳过</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr id="tr_3">
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">ShardManger</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="SHARD_MANAGER_ID" />
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">类名(*)</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="GX_CLASS_NAME" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">方法名(*)</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="GX_METHOD" /></td>
+					</tr>
+					<tr id="tr_4">
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">是否分段</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="IS_SPLIT">
+								<option value="N">否</option>
+								<option value="Y">是</option>
+							</select>
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">是否分库执行</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="BY_SCHEMA">
+								<option value="N">否</option>
+								<option value="Y">是</option>
+								<option value="A">所有</option>
+							</select>
+						</td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">是否可用</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="STATUS">
+								<option value="Y">是</option>
+								<option value="N">否</option>
+							</select>
+						</td>
+					</tr>
+					<tr id="tr_5">
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">批量提交数量</td>
+						<td><input type="text" class="input-text" style="margin-bottom:0px;" id="BATCH_SIZE" /></td>
+						<td style="text-align:right;padding-right:5px;padding-left:5px;">是否开启DTP</td>
+						<td>
+							<select class="input-text" style="margin-bottom:0px;" id="DTP_FLAG">
+								<option value="N">否</option>
+								<option value="Y">是</option>
+							</select>
+						</td>
+					</tr>
+
+				</table>
+				<div id="JOB_SPLIT_TITLE" class="JOB_SPLIT_DIV">
+					<h5>JOB分段属性</h5>
+				</div>
+				<div id="JOB_SPLIT" class="JOB_SPLIT_DIV">
+					<table>
+						<tr>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段类型</td>
+							<td>
+								<select type="text" class="input-text" style="margin-bottom:0px;" id="SPLIT_CLASS">
+									<option value="T">表分段</option>
+									<option value="F">文件分段</option>
+								</select>
+							</td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段方式</td>
+							<td>
+								<select type="text" class="input-text" style="margin-bottom:0px;" id="SPLIT_TYPE">
+									<option value="N">按节点分</option>
+									<option value="S">指定段数</option>
+									<option value="M">每段最大数分段</option>
+									<option value="B">指定段数和每段最大数结合</option>
+									<option value="K">按关键字段分</option>
+								</select>
+							</td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分几段</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="SPLIT_CNT" /></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">每段最大条数</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="MAX_PER_SPLIT" />
+							</td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段语句命名空间</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="NAMESPACE" /></td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段语句SQL ID</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="SQL_ID" /></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段文件路径</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="FILE_PATH" /></td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段文件</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="FILE_NAME" /></td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">分段文件格式</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="FILE_FORMAT" />
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;">文件行数字段名</td>
+							<td><input type="text" class="input-text" style="margin-bottom:0px;" id="FILE_ROW_NAME" />
+							</td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;"></td>
+							<td></td>
+							<td style="text-align:right;padding-right:5px;padding-left:5px;"></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+	<iframe id="downFrame" src="" title="" style="display:none; visibility:hidden;"></iframe>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="18px" viewBox="0 0 110 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>编组 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-2" transform="translate(2.445312, 1.480807)" stroke="#707070">
+            <path d="M0,0.144193282 L13.0087891,13.0445839" id="路径-6" stroke-width="3" stroke-linecap="round"></path>
+            <polyline id="路径-7" stroke-width="2.5" stroke-linecap="round" points="17.5546875 0.519193282 29.6484375 0.519193282 29.6484375 13.4195839"></polyline>
+            <polyline id="路径-8" stroke-width="2.5" stroke-linecap="round" points="37.9365234 0.144193282 37.9365234 14.0445839 50.7363281 14.0191933"></polyline>
+            <polyline id="路径-9" stroke-width="2.5" stroke-linecap="round" points="55.9052734 2.37319719 64.2566549 2.37319719 64.2566549 14.0445839 73 14.0445839"></polyline>
+            <polyline id="路径-10" stroke-width="2.5" stroke-linecap="round" points="79.5546875 0.519193282 79.5546875 7.01919328 89.5546875 7.01919328 89.5546875 13.5445839"></polyline>
+            <path d="M94.5947266,1.01919328 C102.198242,0.685859949 105.666667,4.69432349 105,13.0445839" id="路径-11" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M14.0546875,12.6372273 L12.3637045,16.0191933 L15.7456705,16.0191933 L14.0546875,12.6372273 Z" id="三角形" fill="#707070" transform="translate(14.054688, 14.019193) rotate(133.000000) translate(-14.054688, -14.019193) "></path>
+            <path d="M29.5546875,12.6372273 L27.8637045,16.0191933 L31.2456705,16.0191933 L29.5546875,12.6372273 Z" id="三角形" fill="#707070" transform="translate(29.554688, 14.019193) rotate(180.000000) translate(-29.554688, -14.019193) "></path>
+            <path d="M51.5546875,12.6372273 L49.8637045,16.0191933 L53.2456705,16.0191933 L51.5546875,12.6372273 Z" id="三角形" fill="#707070" transform="translate(51.554688, 14.019193) rotate(90.000000) translate(-51.554688, -14.019193) "></path>
+            <path d="M73.5546875,12.6372273 L71.8637045,16.0191933 L75.2456705,16.0191933 L73.5546875,12.6372273 Z" id="三角形" fill="#707070" transform="translate(73.554688, 14.019193) rotate(90.000000) translate(-73.554688, -14.019193) "></path>
+            <path d="M89.5546875,12.6372273 L87.8637045,16.0191933 L91.2456705,16.0191933 L89.5546875,12.6372273 Z" id="三角形" fill="#707070" transform="translate(89.554688, 14.019193) rotate(180.000000) translate(-89.554688, -14.019193) "></path>
+            <path d="M105.054687,12.6372273 L103.363704,16.0191933 L106.745671,16.0191933 L105.054688,12.6372273 Z" id="三角形" fill="#707070" transform="translate(105.054688, 14.019193) rotate(180.000000) translate(-105.054688, -14.019193) "></path>
+        </g>
+    </g>
+</svg>
